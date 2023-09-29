@@ -1,0 +1,28 @@
+body {
+  font-family: $primaryFont;
+}
+
+a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+button, input, select, option, textarea {
+  font-family: $primaryFont;
+}
+
+input, select, option, textarea {
+  font-size: 1rem;
+}
+
+.inputError {
+  display: block;
+  background-color: $grey;
+  font-size: .75rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  padding: 0.25rem 1rem !important;
+  margin-bottom: 1rem;
+  margin-top: -1rem;
+}
