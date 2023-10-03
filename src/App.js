@@ -1,15 +1,18 @@
-import AppContextProvider from "contexts/AppContext";
+import { useState } from "react";
+// import AppContextProvider from "contexts/AppContext";
 import "./assets/styles/styles.scss";
 import { AppRouter } from "config/C4";
-
-// eslint-disable-next-line no-unused-vars
-import firebase from "./FirebaseConfig";
+import FirebaseAuthServices from "./FirebaseAuthService";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  FirebaseAuthServices.subscribeToAuthChanges(setUser);
+
   return (
-    <AppContextProvider>
-      <AppRouter />
-    </AppContextProvider>
+    <>
+      <AppRouter existingUser={user} />
+    </>
   );
 }
 

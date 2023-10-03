@@ -24,7 +24,7 @@ const checkLoggedIn = (callback) => {
   else callback(false);
 };
 
-const AppRouter = () => {
+const AppRouter = ({ existingUser }) => {
   const [loggedIn, setLoggedIn] = useState(null);
 
   useEffect(() => {
@@ -67,7 +67,12 @@ const AppRouter = () => {
               <Route
                 path="/"
                 exact
-                render={() => <LoginView loggedInIsTrue={loggedInIsTrue} />}
+                render={() => (
+                  <LoginView
+                    existingUser={existingUser}
+                    loggedInIsTrue={loggedInIsTrue}
+                  />
+                )}
               />
               {window.location.pathname !== "/" && (
                 <Route path="*" component={LoginRequiredView} />

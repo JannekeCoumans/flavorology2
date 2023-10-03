@@ -4,7 +4,56 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  padding: 4rem;
+  background-color: $creme;
   overflow-y: auto;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+  }
+
+  &__image {
+    background-color: $purple;
+    min-height: 100vh;
+    height: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5rem;
+
+    &--intro {
+      max-width: 325px;
+      margin-bottom: 3rem;
+
+      h1 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &--form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 350px;
+
+      .input-row-horizontal {
+        justify-content: space-between;
+        margin: 1rem 0;
+      }
+
+      .btn-wrapper .primary-btn {
+        width: 100%;
+      }
+
+      .form-footer {
+        margin-top: 3rem;
+      }
+    }
+  }
 }

@@ -11,7 +11,6 @@ export { default as Nav } from "components/Nav";
 export { default as RecipeCard } from "components/RecipeCard";
 export { default as RecipeOverviewHeader } from "components/RecipeOverviewHeader";
 export { default as RecipesFilter } from "components/RecipesFilter";
-export { default as RegisterUser } from "components/RegisterUser";
 export { default as ScrollToTopButton } from "components/ScrollToTopButton";
 
 // CONFIG
