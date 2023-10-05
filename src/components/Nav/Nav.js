@@ -15,6 +15,8 @@ import logo from "assets/images/logo.svg";
 import ShoppinglistIsFilled from "config/ShoppinglistIsFilled";
 import ShoppingListIcon from "./ShoppingListIcon";
 
+import FirebaseAuthService from "../../FirebaseAuthService";
+
 const SearchInput = () => {
   return (
     <div className="search-input">
@@ -57,6 +59,10 @@ const Nav = () => {
     setMenuOpen(false);
   };
 
+  const handleLogout = () => {
+    FirebaseAuthService.logoutUser();
+  };
+
   return (
     <nav id="nav" className="nav" ref={ref}>
       <div className="nav__wrapper container">
@@ -69,6 +75,9 @@ const Nav = () => {
           <Link to="/recepten">Recepten</Link>
           <Link to="/onlangs-toegevoegd">Onlangs toegevoegd</Link>
           <Link to="/uitproberen">Uitproberen</Link>
+          <button className="no-btn" onClick={handleLogout}>
+            Uitloggen
+          </button>
           <SearchInput />
         </div>
         <button onClick={() => openMenu()} className="nav__burgermenu">

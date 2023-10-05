@@ -1,48 +1,38 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import {
-  AddRecipeView,
-  Nav,
-  HomeView,
-  RecipeOverview,
-  RecipesView,
-  ScrollToTop,
-  ShoppingListView,
-  ComingSoon,
-  FavoritesView,
-  AccountView,
-  StorageHandler,
+  // AddRecipeView,
+  // Nav,
+  // HomeView,
+  // RecipeOverview,
+  // RecipesView,
+  // ScrollToTop,
+  // ShoppingListView,
+  // ComingSoon,
+  // FavoritesView,
+  // AccountView,
   LoginView,
-  LoginRequiredView,
-  ScrollToTopButton,
+  // LoginRequiredView,
+  // ScrollToTopButton,
+  AddEditRecipeForm,
 } from "../config/C4";
 
-const checkLoggedIn = (callback) => {
-  const user = StorageHandler.get("user");
-  if (user) callback(true);
-  else callback(false);
-};
-
-const AppRouter = ({ existingUser }) => {
-  const [loggedIn, setLoggedIn] = useState(null);
-
-  useEffect(() => {
-    if (loggedIn === null) checkLoggedIn(setLoggedIn);
-  }, [loggedIn]);
-
-  const loggedInIsTrue = (bool) => {
-    setLoggedIn(bool);
-  };
-
+const AppRouter = ({ existingUser, handleAddRecipe }) => {
   return (
     <Router>
-      <ScrollToTop />
-      {loggedIn && <Nav />}
-      <div id="top" className={loggedIn ? "viewContainer" : ""}>
-        {loggedIn && <ScrollToTopButton scrollToElement="top" />}
+      <LoginView existingUser={existingUser} />
+      {existingUser ? (
+        <AddEditRecipeForm handleAddRecipe={handleAddRecipe} />
+      ) : null}
+
+      {/* <ScrollToTop />
+      {existingUser && <Nav />}
+      <div id="top" className={existingUser ? "viewContainer" : ""}>
+        {existingUser && <ScrollToTopButton scrollToElement="top" />}
         <Switch>
-          {loggedIn ? (
+          {existingUser ? (
             <>
               <Route path="/" exact component={HomeView} />
               <Route path="/recepten" exact component={RecipesView} />
@@ -67,12 +57,7 @@ const AppRouter = ({ existingUser }) => {
               <Route
                 path="/"
                 exact
-                render={() => (
-                  <LoginView
-                    existingUser={existingUser}
-                    loggedInIsTrue={loggedInIsTrue}
-                  />
-                )}
+                render={() => <LoginView existingUser={existingUser} />}
               />
               {window.location.pathname !== "/" && (
                 <Route path="*" component={LoginRequiredView} />
@@ -80,7 +65,7 @@ const AppRouter = ({ existingUser }) => {
             </>
           )}
         </Switch>
-      </div>
+      </div> */}
     </Router>
   );
 };

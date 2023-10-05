@@ -2,11 +2,13 @@ import { useState } from "react";
 import FirebaseAuthService from "../../FirebaseAuthService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-regular-svg-icons";
 
 const LoginForm = ({ changeForm }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [buttonLoading, setButtonLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -73,14 +75,27 @@ const LoginForm = ({ changeForm }) => {
         </label>
         <label className="input-label ">
           Wachtwoord
-          <input
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="input-text"
-            placeholder="Wachtwoord"
-          />
+          <div className="password-inputfield">
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="input-text"
+              placeholder="Wachtwoord"
+            />
+            <button
+              type="button"
+              className="togglePasswordVisibility"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? (
+                <FontAwesomeIcon icon={faEye} />
+              ) : (
+                <FontAwesomeIcon icon={faEyeSlash} />
+              )}
+            </button>
+          </div>
         </label>
         <div className="input-row-horizontal">
           <label className="input-label hor small custom-checkbox">

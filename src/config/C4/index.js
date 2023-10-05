@@ -1,5 +1,6 @@
 // COMPONENTS
 
+export { default as AddEditRecipeForm } from "components/AddEditRecipeForm";
 export { default as AddToFavorite } from "components/AddToFavorite";
 export { default as AlertPopup } from "components/AlertPopup";
 export { default as AlterRecipe } from "components/AlterRecipe";

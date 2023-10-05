@@ -56,6 +56,11 @@ button {
   padding: 1rem 2rem;
   overflow: hidden;
   transition: 0.2s ease-in;
+
+  &.outline {
+    background-color: transparent;
+    color: $orange;
+  }
 }
 
 .no-btn {
@@ -184,7 +189,9 @@ button {
   }
 }
 
-input {
+input,
+select,
+textarea {
   background-color: white;
   border: 1px solid rgba($black, 0.6);
   border-radius: 0.25rem;
@@ -209,6 +216,14 @@ label.custom-checkbox {
     cursor: pointer;
     height: 0;
     width: 0;
+
+    &:checked ~ .checkbox-inner {
+      opacity: 1 !important;
+    }
+
+    &:checked ~ span.checkbox .checkbox-inner {
+      opacity: 1 !important;
+    }
   }
 
   span.checkbox {
@@ -219,7 +234,7 @@ label.custom-checkbox {
     width: 28px;
     background-color: $orange;
     border-radius: 4px;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 
     .checkbox-inner {
       display: flex;
@@ -234,23 +249,34 @@ label.custom-checkbox {
       height: 16px;
 
       .checkbox-inner {
-        font-size: 0.5rem;
+        font-size: 0.75rem;
       }
     }
-  }
-
-  &:checked ~ span.checkbox {
-    opacity: 1 !important;
-  }
-
-  &:checked ~ span.checkbox .checkbox-inner {
-    opacity: 1 !important;
   }
 }
 
 .input-row-horizontal {
   display: flex;
   gap: 1rem;
+}
+
+.password-inputfield {
+  position: relative;
+  width: 100%;
+
+  input {
+    width: 100%;
+  }
+}
+.togglePasswordVisibility {
+  position: absolute;
+  top: calc(50% - 11px);
+  right: 16px;
+  color: $black;
+  border: none;
+  width: 30px;
+  height: 30px;
+  transition: 0.2s;
 }
 
 // .custom-checkbox {
