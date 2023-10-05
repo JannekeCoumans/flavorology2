@@ -327,6 +327,15 @@ function App() {
                   <div className="unpublished">UNPUBLISHED</div>
                 ) : null}
                 <h4>{recipe.name}</h4>
+                {recipe.imageUrl ? (
+                  <div>
+                    <img
+                      src={recipe.imageUrl}
+                      alt={recipe.name}
+                      width="300px"
+                    />
+                  </div>
+                ) : null}
                 <p>Category: {lookupCategoryLabel(recipe.category)}</p>
                 <p>Publish Date: {formatDate(recipe.publishDate)}</p>
                 {user ? (

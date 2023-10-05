@@ -5,6 +5,7 @@ export { default as AddToFavorite } from "components/AddToFavorite";
 export { default as AlertPopup } from "components/AlertPopup";
 export { default as AlterRecipe } from "components/AlterRecipe";
 export { default as EditAccount } from "components/EditAccount";
+export { default as ImageUploadPreview } from "components/ImageUploadPreview";
 export { default as InspirationRecipes } from "components/InspirationRecipes";
 export { default as LoginUser } from "components/LoginUser";
 export { default as Modal } from "components/Modal";

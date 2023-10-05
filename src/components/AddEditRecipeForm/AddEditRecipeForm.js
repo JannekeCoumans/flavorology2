@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ImageUploadPreview } from "config/C4";
 
 const AddEditRecipeForm = ({
   existingRecipe,
@@ -14,6 +15,7 @@ const AddEditRecipeForm = ({
       setDirections(existingRecipe.directions);
       setPublishDate(existingRecipe.publishDate.toISOString().split("T")[0]);
       setIngredients(existingRecipe.ingredients);
+      setImageUrl(existingRecipe.imageUrl);
     } else {
       resetForm();
     }
@@ -27,12 +29,18 @@ const AddEditRecipeForm = ({
   const [directions, setDirections] = useState("");
   const [ingredients, setIngredients] = useState([]);
   const [ingredientName, setIngredientName] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleRecipeFormSubmit = (e) => {
     e.preventDefault();
 
     if (ingredients.length === 0) {
       alert("ingredient cannot be empty");
+      return;
+    }
+
+    if (!imageUrl) {
+      alert("Missing recipe image. Please add a recipe image.");
       return;
     }
 
@@ -45,6 +53,7 @@ const AddEditRecipeForm = ({
       publishDate: new Date(publishDate),
       isPublished,
       ingredients,
+      imageUrl,
     };
 
     if (existingRecipe) {
@@ -78,6 +87,7 @@ const AddEditRecipeForm = ({
     setDirections("");
     setPublishDate("");
     setIngredients([]);
+    setImageUrl("");
   }
 
   return (
@@ -92,6 +102,15 @@ const AddEditRecipeForm = ({
       }}
     >
       {existingRecipe ? <h2>Update the Recipe</h2> : <h2>Add a new Recipe</h2>}
+      <div>
+        Recipe Image
+        <ImageUploadPreview
+          basePath="recipes"
+          existingImageUrl={imageUrl}
+          handleUploadFinish={(downloadUrl) => setImageUrl(downloadUrl)}
+          handleUploadCancel={() => setImageUrl("")}
+        />
+      </div>
       <label htmlFor="" className="input-label">
         Recipe name:
         <input
